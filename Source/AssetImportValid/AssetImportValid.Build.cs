@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class assetvalidate_plugin : ModuleRules
+public class AssetImportValid : ModuleRules
 {
-	public assetvalidate_plugin(ReadOnlyTargetRules Target) : base(Target)
+	public AssetImportValid(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	

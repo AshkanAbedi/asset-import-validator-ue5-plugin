@@ -5,7 +5,6 @@
 #include "SlateNotificationsBPLibrary.h"
 #include "Misc/DataValidation.h"
 
-
 UCustomAssetValidator::UCustomAssetValidator()
 {
 	bIsEnabled = true;
@@ -21,8 +20,7 @@ EDataValidationResult UCustomAssetValidator::ValidateLoadedAsset_Implementation(
 	TArray<FText>& ValidationErrors)
 {
 	EDataValidationResult Result = EDataValidationResult::Valid;
-
-	// Type-specific checks (scalable: add if-else for other asset types)
+	
 	if (UTexture2D* Texture = Cast<UTexture2D>(InAsset))
 	{
 		FString AssetName = Texture->GetName();
@@ -38,14 +36,7 @@ EDataValidationResult UCustomAssetValidator::ValidateLoadedAsset_Implementation(
 			Result = CombineDataValidationResults(Result, EDataValidationResult::Invalid);
 		}
 	}
-	// Example for scaling to another type (uncomment and customize):
-	// else if (UMaterial* Material = Cast<UMaterial>(InAsset))
-	// {
-	//     // Add material-specific checks here, e.g., name prefix or parameter validation
-	// }
-
-	// Show notification based on result
-	// Note: In batch validation (e.g., validating a folder), this will notify per asset. If unwanted, you could check GEditor->GetSelectedObjects() or similar for context.
+	
 	if (Result == EDataValidationResult::Valid)
 	{
 		USlateNotificationsBPLibrary::NotifySuccess(FText::FromString(TEXT("All the assets are fine")));
@@ -54,6 +45,5 @@ EDataValidationResult UCustomAssetValidator::ValidateLoadedAsset_Implementation(
 	{
 		USlateNotificationsBPLibrary::NotifyError(FText::FromString(TEXT("Asset validation failed")), TEXT("https://yourproject.com/asset-requirements"), FText::FromString(TEXT("View Requirements")));
 	}
-
 	return Result;
 }

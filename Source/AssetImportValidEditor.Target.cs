@@ -3,13 +3,13 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class assetvalidate_pluginEditorTarget : TargetRules
+public class AssetImportValidEditorTarget : TargetRules
 {
-	public assetvalidate_pluginEditorTarget(TargetInfo Target) : base(Target)
+	public AssetImportValidEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 
-		ExtraModuleNames.AddRange( new string[] { "assetvalidate_plugin" } );
+		ExtraModuleNames.AddRange( new string[] { "AssetImportValid" } );
 	}
 }
